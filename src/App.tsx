@@ -1,25 +1,25 @@
 import React from "react";
+import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 
 function App() {
-  const a = 123;
-
-  if (a === 123) {
-    console.log(2);
-  }
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
+        <Button btnType={ButtonType.Primary} autoFocus>
+          Hello
+        </Button>
+        <Button disabled>Hello</Button>
+        <Button btnType={ButtonType.Danger}>Hello Danger</Button>
+        <Button
+          btnType={ButtonType.Link}
           target="_blank"
-          rel="noopener noreferrer"
+          href="//www.baidu.com"
         >
-          Learn React
-        </a>
+          Hello Link
+        </Button>
+        <Button btnType={ButtonType.Link} href="www.baidu.com" disabled>
+          Hello Link
+        </Button>
       </header>
     </div>
   );
