@@ -53,11 +53,11 @@
     }
   }
   .merzoo-submenu {
-    display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
-    transition: $menu-transition;
+    // transition: opacity 0.5s ease-in-out;
+    // transition: $menu-transition;
     .menu-item {
       padding: $menu-item-padding-y $menu-item-padding-x;
       cursor: pointer;
@@ -70,7 +70,6 @@
     }
   }
   .merzoo-submenu.menu-opened {
-    display: block;
   }
 }
 .menu-horizontal {
