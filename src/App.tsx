@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h4>测试Menu</h4>
-        <Menu>
+        <Menu mode="vertical" defaultOpenSubMenus={["3"]}>
           <MenuItem>2323</MenuItem>
           <MenuItem disabled>211323</MenuItem>
           <MenuItem>wowowowo</MenuItem>
