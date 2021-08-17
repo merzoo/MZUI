@@ -16,7 +16,7 @@ const disabledProps = {
   disabled: true,
 };
 
-describe("test button component", () => {
+describe("Button", () => {
   test("should render the correct default button", () => {
     const wrapper = render(<Button {...defaultProps}>default button</Button>);
     const element = wrapper.getByText("default button") as HTMLButtonElement;

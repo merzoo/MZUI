@@ -1,11 +1,12 @@
 import React, { useState, createContext } from "react";
 import classNames from "classnames";
+import { ItemProps } from "./menuItem";
 
 type MenuMode = "horizontal" | "vertical";
-type SelectCallback = (selectedIndex: number) => void;
+type SelectCallback = (selectedIndex: string) => void;
 
 export interface MenuProps {
-  defaultIndex?: number;
+  defaultIndex?: string;
   className?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
@@ -14,11 +15,12 @@ export interface MenuProps {
 }
 
 interface IMenuContext {
-  index: number;
+  index: string;
   onSelect?: SelectCallback;
+  mode?: MenuMode;
 }
 
-export const MenuContext = createContext<IMenuContext>({ index: 0 });
+export const MenuContext = createContext<IMenuContext>({ index: "0" });
 
 const Menu: React.FC<MenuProps> = ({
   defaultIndex,
@@ -33,9 +35,10 @@ const Menu: React.FC<MenuProps> = ({
 
   const classes = classNames("merzoo-menu", className, {
     "menu-vertical": mode === "vertical",
+    "menu-horizontal": mode !== "vertical",
   });
 
-  const handleClick = (index: number) => {
+  const handleClick = (index: string) => {
     setActive(index);
     if (onSelect) {
       onSelect(index);
@@ -43,9 +46,24 @@ const Menu: React.FC<MenuProps> = ({
   };
 
   const passedContext: IMenuContext = {
-    index: currentActive ? currentActive : 0,
+    index: currentActive ? currentActive : "0",
     onSelect: handleClick,
+    mode,
   };
+
+  const renderChildren = () =>
+    React.Children.map(children, (child, index) => {
+      const childElement = child as React.FunctionComponentElement<ItemProps>;
+      const { displayName } = childElement.type;
+
+      if (displayName === "MenuItem" || displayName === "SubMenu") {
+        return React.cloneElement(childElement, {
+          index: index.toString(),
+        });
+      } else {
+        console.error("Warning: Menu has a child which is not a MenuItem!");
+      }
+    });
 
   return (
     <ul
@@ -55,14 +73,14 @@ const Menu: React.FC<MenuProps> = ({
       data-testid="test-menu"
     >
       <MenuContext.Provider value={passedContext}>
-        {children}
+        {renderChildren()}
       </MenuContext.Provider>
     </ul>
   );
 };
 
 Menu.defaultProps = {
-  defaultIndex: 0,
+  defaultIndex: "0",
   mode: "horizontal",
 };
 
