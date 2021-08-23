@@ -9,6 +9,7 @@ module.exports = ({ config }) => {
             presets: [require.resolve("babel-preset-react-app")],
           },
         },
+        { loader: require.resolve("react-docgen-typescript-loader") },
       ],
     },
     {
