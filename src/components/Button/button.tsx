@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 
-export type ButtonSize = "lg" | "small";
+export type ButtonSize = "lg" | "sm";
 export type ButtonType = "primary" | "default" | "danger" | "link";
 
 interface BaseButtonProps {
