@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/esir/.nvm/versions/node/v16.3.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js build-ts
+  /Users/esir/.nvm/versions/node/v16.3.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js lint
 
 PATH: 
   /Users/esir/flutter/bin:/Users/esir/.nvm/versions/node/v16.3.0/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/esir/Tools:/Users/esir/Library/Android/sdk/tools:/Users/esir/Library/Android/sdk/platform-tools
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/esir/Documents/projects/MerzooDesgin/package.json: Unexpected token } in JSON at position 1265
+  SyntaxError: /Users/esir/Documents/projects/MerzooDesgin/package.json: Unexpected token } in JSON at position 522
       at JSON.parse (<anonymous>)
       at /usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -23,42 +23,50 @@ Trace:
 
 npm manifest: 
   {
-    "name": "ziui",
+    "name": "react-mzui",
     "version": "0.1.0",
-    "private": true,
+    "description": "React components library",
+    "author": "merzoo",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "license": "MIT",
+    "keywords": [
+      "Component",
+      "UI",
+      "React"
+    ],
+    "homepage": "https://github.com/merzoo/MZUI",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/merzoo/MZUI"
+    },
+    "files": [
+      "dist"
+    ],
+    "peerDependencies": {
+      "react": "^17.0.1",
+      "react-dom": "^17.0.1",
+    },
     "dependencies": {
       "@fortawesome/fontawesome-svg-core": "^1.2.36",
       "@fortawesome/free-solid-svg-icons": "^5.15.4",
       "@fortawesome/react-fontawesome": "^0.1.15",
-      "@storybook/preset-create-react-app": "^3.2.0",
-      "@storybook/react": "^6.3.7",
-      "@testing-library/jest-dom": "^5.11.4",
-      "@testing-library/react": "^11.1.0",
-      "@testing-library/user-event": "^12.1.10",
-      "@types/jest": "^26.0.15",
-      "@types/node": "^12.0.0",
-      "@types/react": "^16.9.53",
-      "@types/react-dom": "^16.9.8",
-      "@types/react-transition-group": "^4.4.2",
       "axios": "^0.21.1",
       "classnames": "^2.2.6",
-      "react": "^17.0.1",
-      "react-dom": "^17.0.1",
-      "react-scripts": "4.0.1",
-      "react-transition-group": "^4.4.2",
-      "sass-loader": "8.0.2",
-      "typescript": "4.2.2",
-      "web-vitals": "^0.2.4"
+      "react-transition-group": "^4.4.2"
     },
     "scripts": {
       "start": "react-scripts start",
-      "build": "react-scripts build",
       "test": "react-scripts test",
       "eject": "react-scripts eject",
+      "clean": "rimraf ./dist",
+      "lint": "eslint --ext .js,ts,tsx src --max-warnings 5",
       "storybook": "start-storybook -p 9009 -s public",
       "build-storybook": "build-storybook -s public",
       "build-ts": "tsc -p tsconfig.build.json",
       "build-css": "sass ./src/styles/index.scss ./dist/index.css",
+      "build": "npm run clean && npm run build-ts && npm run build-css"
     },
     "eslintConfig": {
       "extends": [
@@ -79,12 +87,26 @@ npm manifest:
       ]
     },
     "devDependencies": {
+      "react-scripts": "4.0.1",
+      "sass-loader": "8.0.2",
+      "typescript": "4.2.2",
+      "web-vitals": "^0.2.4",
+      "@storybook/preset-create-react-app": "^3.2.0",
+      "@storybook/react": "^6.3.7",
       "@storybook/addon-actions": "^6.3.7",
       "@storybook/addon-info": "^5.3.21",
       "@storybook/addon-links": "^6.3.7",
       "@storybook/addons": "^6.3.7",
       "@types/classnames": "^2.2.11",
       "@types/storybook__addon-info": "^5.2.4",
+      "@testing-library/jest-dom": "^5.11.4",
+      "@testing-library/react": "^11.1.0",
+      "@testing-library/user-event": "^12.1.10",
+      "@types/jest": "^26.0.15",
+      "@types/node": "^12.0.0",
+      "@types/react": "^16.9.53",
+      "@types/react-dom": "^16.9.8",
+      "@types/react-transition-group": "^4.4.2",
       "react-docgen-typescript-loader": "^3.7.2",
       "sass": "^1.37.5"
     }
@@ -13625,9 +13647,16 @@ Lockfile:
     dependencies:
       glob "^7.1.3"
   
-  rimraf@^3.0.0, rimraf@^3.0.2:
+  rimraf@^3.0.0:
     version "3.0.2"
     resolved "https://registry.nlark.com/rimraf/download/rimraf-3.0.2.tgz?cache=0&sync_timestamp=1618910289576&other_urls=https%3A%2F%2Fregistry.nlark.com%2Frimraf%2Fdownload%2Frimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
+    integrity sha1-8aVAK6YiCtUswSgrrBrjqkn9Bho=
+    dependencies:
+      glob "^7.1.3"
+  
+  rimraf@^3.0.2:
+    version "3.0.2"
+    resolved "https://registry.npm.taobao.org/rimraf/download/rimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
     integrity sha1-8aVAK6YiCtUswSgrrBrjqkn9Bho=
     dependencies:
       glob "^7.1.3"
