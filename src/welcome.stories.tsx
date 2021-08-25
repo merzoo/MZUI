@@ -6,7 +6,7 @@ storiesOf("Welcome page", module).add(
   () => {
     return (
       <>
-        <h1>👏🏻组件库欢迎页</h1>
+        <h1>欢迎使用 mzui </h1>
       </>
     );
   },
