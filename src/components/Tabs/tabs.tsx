@@ -12,7 +12,7 @@ interface TabsProps {
   onSelect: (index: string) => void;
 }
 
-const Tab: React.FC<TabsProps> = ({
+const Tabs: React.FC<TabsProps> = ({
   defaultIndex,
   className,
   style,
@@ -40,3 +40,5 @@ const Tab: React.FC<TabsProps> = ({
     </ul>
   );
 };
+
+export default Tabs;

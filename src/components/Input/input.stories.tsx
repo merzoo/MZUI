@@ -15,7 +15,7 @@ export default {
   },
 } as Meta;
 
-export const ControlledInput = () => {
+const ControlledInput = () => {
   const [value, setValue] = useState();
   return (
     <Input

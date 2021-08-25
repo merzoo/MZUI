@@ -1,38 +1,47 @@
 {
-  "name": "m",
+  "name": "react-mzui",
   "version": "0.1.0",
-  "private": true,
+  "description": "React components library",
+  "author": "merzoo",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "homepage": "https://github.com/merzoo/MZUI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/merzoo/MZUI"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.7",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-transition-group": "^4.4.2",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
-    "react-transition-group": "^4.4.2",
-    "sass-loader": "8.0.2",
-    "typescript": "4.2.2",
-    "web-vitals": "^0.2.4"
+    "react-transition-group": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "clean": "rimraf ./dist",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "sass ./src/styles/index.scss ./dist/index.css",
+    "build": "npm run clean && npm run build-ts && npm run build-css"
   },
   "eslintConfig": {
     "extends": [
@@ -53,12 +62,26 @@
     ]
   },
   "devDependencies": {
+    "react-scripts": "4.0.1",
+    "sass-loader": "8.0.2",
+    "typescript": "4.2.2",
+    "web-vitals": "^0.2.4",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.7",
     "@storybook/addon-actions": "^6.3.7",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.3.7",
     "@storybook/addons": "^6.3.7",
     "@types/classnames": "^2.2.11",
     "@types/storybook__addon-info": "^5.2.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-transition-group": "^4.4.2",
     "react-docgen-typescript-loader": "^3.7.2",
     "sass": "^1.37.5"
   }
