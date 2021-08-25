@@ -12,10 +12,10 @@
     "UI",
     "React"
   ],
-  "homepage": "https://github.com/merzoo/MZUI",
+  "homepage": "https://github.com/merzoo/react-mzui",
   "repository": {
     "type": "git",
-    "url": "https://github.com/merzoo/MZUI"
+    "url": "https://github.com/merzoo/react-mzui"
   },
   "files": [
     "dist"
